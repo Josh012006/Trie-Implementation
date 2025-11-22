@@ -18,7 +18,6 @@ class Trie {
         // Constructors and destructors
         /**
          * Basic constructor for the Trie class.
-         * Initializes a root with the special character #.
          */
         Trie();
 

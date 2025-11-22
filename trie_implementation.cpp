@@ -1,10 +1,7 @@
 #include "trie_implementation.hpp"
 
 // Constructors
-Trie::Trie() {
-    this->val = '#';
-}
-
+Trie::Trie() {}
 Trie::Trie(char init) {
     this->val = init;
 }
@@ -30,6 +27,13 @@ void Trie::insert(std::string entry) {
 
 // Search a word in the Trie
 bool Trie::search(std::string toSearch) {
+    if(toSearch == "") return true;
+    if(this->children.size() != 0) {
+        for(Trie* child : this->children) {
+            if(child->val == toSearch[0])
+                return child->search(toSearch.substr(1, entry.length() - 1));
+        }
+    }
     return false;
 };
 
