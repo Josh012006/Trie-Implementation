@@ -2,9 +2,14 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 class Trie {
 public:
+    Trie() {};
+    Trie(char init) {};
+
+
     std::vector<Trie*> children;
     char val;
 
