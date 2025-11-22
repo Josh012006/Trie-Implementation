@@ -16,5 +16,13 @@ int main() {
         std::cout << child->val << std::endl;
     }
 
+    auto seen = [myTrie] (std::string text) {
+        std::cout << text + " " + ((myTrie->search(text)) ? "was" : "wasn't") + " found" << std::endl;
+    };
+
+    seen("hello");
+    seen("helium");
+    seen("not_inside");
+
     delete myTrie;
 }

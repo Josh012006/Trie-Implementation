@@ -31,7 +31,7 @@ bool Trie::search(std::string toSearch) {
     if(this->children.size() != 0) {
         for(Trie* child : this->children) {
             if(child->val == toSearch[0])
-                return child->search(toSearch.substr(1, entry.length() - 1));
+                return child->search(toSearch.substr(1, toSearch.length() - 1));
         }
     }
     return false;
