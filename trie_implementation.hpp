@@ -18,6 +18,7 @@ class Trie {
         // Constructors and destructors
         /**
          * Basic constructor for the Trie class.
+         * Initializes the root with the special character #.
          */
         Trie();
 
@@ -44,8 +45,10 @@ class Trie {
         /**
          * Used to remove a word from the trie.
          * @param toDelete the word that must be deleted.
+         * @return true if the deletion was successful and false
+         * if the word wasn't found.
          */
-        void erase(std::string toDelete);
+        bool erase(std::string toDelete);
 
     private:
         // Constructors and destructors

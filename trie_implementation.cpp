@@ -1,7 +1,9 @@
 #include "trie_implementation.hpp"
 
 // Constructors
-Trie::Trie() {}
+Trie::Trie() {
+    this->val = '#';
+}
 Trie::Trie(char init) {
     this->val = init;
 }
@@ -13,7 +15,11 @@ Trie::~Trie() {
 
 // Insert a new word in the Trie
 void Trie::insert(std::string entry) {
-    if(entry == "") return;
+    if(entry == "") {
+        Trie* endNode = new Trie('#');
+        this->children.push_back(endNode);
+        return;
+    }
     std::string nextSuffix = entry.substr(1, entry.length() - 1);
     if(this->children.size() != 0) {
         for(Trie* child : this->children) {
@@ -27,8 +33,12 @@ void Trie::insert(std::string entry) {
 
 // Search a word in the Trie
 bool Trie::search(std::string toSearch) {
-    if(toSearch == "") return true;
-    if(this->children.size() != 0) {
+    if(toSearch == "") {
+        for(Trie* child : this->children) {
+            if(child->val == '#')
+                return true;
+        }
+    } else {
         for(Trie* child : this->children) {
             if(child->val == toSearch[0])
                 return child->search(toSearch.substr(1, toSearch.length() - 1));
@@ -38,7 +48,13 @@ bool Trie::search(std::string toSearch) {
 };
 
 // Delete a word in the Trie
-void Trie::erase(std::string toDelete) {
+bool Trie::erase(std::string toDelete) {
+    if(toDelete == "") return true;
 
+//    std::string actual
+//    while(true) {
+//
+//    }
+return false;
 };
 
