@@ -24,5 +24,10 @@ int main() {
     seen("helium");
     seen("not_inside");
 
+    myTrie->erase("hello");
+
+    seen("hello");
+    seen("helium");
+
     delete myTrie;
 }

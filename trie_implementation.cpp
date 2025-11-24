@@ -48,13 +48,32 @@ bool Trie::search(std::string toSearch) {
 };
 
 // Delete a word in the Trie
-bool Trie::erase(std::string toDelete) {
-    if(toDelete == "") return true;
+void Trie::erase(std::string toDelete) {
+    this->eraseRecursive(toDelete);
+}
 
-//    std::string actual
-//    while(true) {
-//
-//    }
-return false;
+// Delete a word in the Trie recursively
+bool Trie::eraseRecursive(std::string toDelete) {
+    if(toDelete == "") {
+        return true;
+    }
+
+    Trie* toTest = nullptr;
+    int toTestIdx;
+    for(int i = 0; i < this->children.size(); i++) {
+        Trie* child = this->children[i];
+        if(child->val == toDelete[0]) {
+            toTest = child;
+            toTestIdx = i;
+        }
+    }
+    if(toTest == nullptr) return false;
+
+    std::string nextSuffix = toDelete.substr(1, toDelete.length() - 1);
+    if(toTest->eraseRecursive(nextSuffix)) {
+        this->children.erase(this->children.begin() + toTestIdx);
+    }
+
+    return this->children.empty();
 };
 

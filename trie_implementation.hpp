@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 /**
  * Coded by Josué Mongan on 21/11/2025.
@@ -45,10 +46,8 @@ class Trie {
         /**
          * Used to remove a word from the trie.
          * @param toDelete the word that must be deleted.
-         * @return true if the deletion was successful and false
-         * if the word wasn't found.
          */
-        bool erase(std::string toDelete);
+        void erase(std::string toDelete);
 
     private:
         // Constructors and destructors
@@ -57,4 +56,13 @@ class Trie {
          * @param init is a character that will be the value of the node (trie) created.
          */
         Trie(char init);
+
+        // Methods
+        /**
+         * Used to remove a word from the trie.
+         * @param toDelete the word that must be deleted.
+         * @return false if the word wasn't found or the character
+         * shouldn't be deleted because it has other children.
+         */
+        bool eraseRecursive(std::string toDelete);
 };
