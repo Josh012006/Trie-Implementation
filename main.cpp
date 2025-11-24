@@ -3,40 +3,21 @@
 
 
 int main() {
-    Trie* myTrie = new Trie();
+    Trie t;
 
-    myTrie->insert("hello");
-    myTrie->insert("helium");
+    t.insert("code");
+    t.insert("coder");
+    t.insert("coding");
+    t.insert("coffee");
 
-    std::cout << myTrie->children[0]->val << std::endl;
-    std::cout << myTrie->children[0]->children[0]->val << std::endl;
-    std::cout << myTrie->children[0]->children[0]->children[0]->val << std::endl;
+    std::cout << std::boolalpha <<  t.search("code") << std::endl;       // true
+    std::cout << std::boolalpha << t.search("cod") << std::endl;        // false
 
-    for(Trie* child : myTrie->children[0]->children[0]->children[0]->children) {
-        std::cout << child->val << std::endl;
-    }
+    std::cout << std::boolalpha << t.isPrefixIn("cod") << std::endl;    // true
+    std::cout << t.count("cod") << std::endl;         // 3
 
-    auto seen = [myTrie] (std::string text) {
-        std::cout << text + " " + ((myTrie->search(text)) ? "was" : "wasn't") + " found" << std::endl;
-    };
+    t.erase("coder");
 
-    seen("hello");
-    seen("helium");
-    seen("not_inside");
-
-    myTrie->erase("hello");
-
-    seen("hello");
-    seen("helium");
-
-    auto wasIn = [myTrie] (std::string text) {
-        std::cout << "The prefix " + text + " " + ((myTrie->isPrefixIn(text)) ? "was" : "wasn't") + " in the Trie" << std::endl;
-    };
-
-    wasIn("hel");
-    wasIn("");
-    wasIn("hello");
-    wasIn("helium");
-
-    delete myTrie;
+    std::cout << std::boolalpha << t.search("coder") << std::endl;      // false
+    std::cout << t.count("cod") << std::endl;         // 2
 }

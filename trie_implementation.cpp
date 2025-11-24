@@ -10,7 +10,9 @@ Trie::Trie(char init) {
 
 // Destructor
 Trie::~Trie() {
-
+    for (Trie* child : this->children) {
+        delete child;
+    }
 }
 
 // Insert a new word in the Trie
@@ -91,4 +93,11 @@ bool Trie::eraseRecursive(std::string toDelete) {
 
     return this->children.empty();
 };
+
+
+int Trie::count(std::string prefixToCount) {
+    Trie* foundPrefix = this->prefix(prefixToCount);
+    if(foundPrefix == nullptr) return 0;
+    return foundPrefix->children.size();
+}
 

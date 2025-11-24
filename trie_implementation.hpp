@@ -56,6 +56,13 @@ class Trie {
          */
         bool isPrefixIn(std::string prefixToFind);
 
+        /**
+         * Helps to count the number of inserted words that have the prefix.
+         * @param prefixToCount the prefix we want to consider.
+         * @return the number of words with in the Trie that prefix.
+         */
+        int count(std::string prefixToCount);
+
     private:
         // Constructors and destructors
         /**
