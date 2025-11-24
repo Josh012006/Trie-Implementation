@@ -86,4 +86,11 @@ class Trie {
          * @return where the matches stopped.
          */
         Trie* prefix(std::string prefixToSearch);
+
+        /**
+         * Used to count the number of distinct suffixes found from this point in
+         * the Trie.
+         * @return the number of suffixes found.
+         */
+        int countWords();
 };

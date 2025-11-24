@@ -98,6 +98,17 @@ bool Trie::eraseRecursive(std::string toDelete) {
 int Trie::count(std::string prefixToCount) {
     Trie* foundPrefix = this->prefix(prefixToCount);
     if(foundPrefix == nullptr) return 0;
-    return foundPrefix->children.size();
+
+    return foundPrefix->countWords();
+}
+
+int Trie::countWords() {
+    if(this->val == '#') return 1;
+
+    int numWords = 0;
+    for(Trie* child : this->children) {
+        numWords += child->countWords();
+    }
+    return numWords;
 }
 
