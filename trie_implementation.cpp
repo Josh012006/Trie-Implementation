@@ -43,6 +43,12 @@ bool Trie::search(std::string toSearch) {
     return false;
 };
 
+
+// See if a prefix is in the Trie
+bool Trie::isPrefixIn(std::string prefixToFind) {
+    return this->prefix(prefixToFind) != nullptr;
+}
+
 // Search till the prefix is found
 Trie* Trie::prefix(std::string prefixToSearch) {
     if(prefixToSearch == "") {

@@ -49,6 +49,13 @@ class Trie {
          */
         void erase(std::string toDelete);
 
+        /**
+         * Is used to check if a prefix is present in the Trie.
+         * @param prefixToFind the prefix that must be found.
+         * @return true if the prefix is present in the Trie.
+         */
+        bool isPrefixIn(std::string prefixToFind);
+
     private:
         // Constructors and destructors
         /**

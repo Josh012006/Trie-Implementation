@@ -29,5 +29,14 @@ int main() {
     seen("hello");
     seen("helium");
 
+    auto wasIn = [myTrie] (std::string text) {
+        std::cout << "The prefix " + text + " " + ((myTrie->isPrefixIn(text)) ? "was" : "wasn't") + " in the Trie" << std::endl;
+    };
+
+    wasIn("hel");
+    wasIn("");
+    wasIn("hello");
+    wasIn("helium");
+
     delete myTrie;
 }
