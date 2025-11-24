@@ -33,19 +33,28 @@ void Trie::insert(std::string entry) {
 
 // Search a word in the Trie
 bool Trie::search(std::string toSearch) {
-    if(toSearch == "") {
-        for(Trie* child : this->children) {
+    Trie* foundPrefix = this->prefix(toSearch);
+    if(foundPrefix != nullptr) {
+        for(Trie* child : foundPrefix->children) {
             if(child->val == '#')
                 return true;
-        }
-    } else {
-        for(Trie* child : this->children) {
-            if(child->val == toSearch[0])
-                return child->search(toSearch.substr(1, toSearch.length() - 1));
         }
     }
     return false;
 };
+
+// Search till the prefix is found
+Trie* Trie::prefix(std::string prefixToSearch) {
+    if(prefixToSearch == "") {
+        return this;
+    } else {
+        for(Trie* child : this->children) {
+            if(child->val == prefixToSearch[0])
+                return child->prefix(prefixToSearch.substr(1, prefixToSearch.length() - 1));
+        }
+    }
+    return nullptr;
+}
 
 // Delete a word in the Trie
 void Trie::erase(std::string toDelete) {

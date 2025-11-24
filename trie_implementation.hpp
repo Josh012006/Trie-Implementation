@@ -65,4 +65,11 @@ class Trie {
          * shouldn't be deleted because it has other children.
          */
         bool eraseRecursive(std::string toDelete);
+
+        /**
+         * Used to search a prefix in the Trie.
+         * @param prefixToSearch the prefix we want to find.
+         * @return where the matches stopped.
+         */
+        Trie* prefix(std::string prefixToSearch);
 };
